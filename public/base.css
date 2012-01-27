@@ -1,0 +1,66 @@
+/*
+   application.css
+   quale_website
+   
+   Created by Michael C. Beck on 2010-11-24.
+   Copyright 2010 Quale. All rights reserved.
+*/
+
+
+/**
+* @section                      Basic Settings
+*/
+
+html                            { font-size:100.01%; height:100%; }
+body                            { background:#fff url(../images/back_tile.jpg); color:#222; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:62.5%; text-align:left; padding:0; margin:0; }
+
+a, 
+a:hover, 
+a:visited                       { text-decoration: none; color: #444; }
+
+a:hover                         { text-decoration:underline; }
+
+
+.hidden                         { display:none;}
+
+/**
+* @section                      ClearFix
+*/
+
+
+.cf:after                       { content: "."; display: block; height: 0; clear: both; visibility: hidden; font-size: 0;}
+.cf                             { display: inline-block; }
+/* Hides from IE-mac \*/        
+.ie6 .cf                        { height: 1%;}
+.cf                             { display: block; }
+.scf                            { width: 100%; overflow: hidden; }
+/* End hide from IE-mac */
+
+
+/**
+* @section                      Font Sizes
+*/
+
+h1, h2, h3, h4,
+h5, h6                          { line-height:1.1em; text-shadow:0 1px 1px #fff; color:#2B2B2B; }
+
+h1                              { font-size:3em; margin:0 auto 2em auto; text-align:center; font-weight:bold; }
+h2                              { font-size:2.0em; font-weight:normal; letter-spacing:-0.03em; margin:1em 0 0.5em 0;}
+h3                              { font-size:1.7em; }
+h4                              { font-size:1.5em; font-weight:normal; }
+
+p                               { font-size:1.4em; line-height:1.6em; margin-bottom:1em; font-family: Verdana, Arial, sans-serif; }
+
+/**
+* @section                      Table Sizes
+*/
+
+
+table                           { width:100%; margin-bottom:1.5em;}
+table tr                        { border:1px solid #d4d5da;}
+
+table th                        { background: #e9e9ec; font-size:14px; }
+table td                        { font-size:12px; border-right:1px solid #d4d5da; }
+
+table th,
+table td                        { padding:0.8em; }

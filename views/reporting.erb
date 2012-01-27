@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>Metric</title>
+  <link rel="stylesheet" href="/reset.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="/base.css" type="text/css" media="screen" charset="utf-8">
+</head>
+
+<body>
+<table>
+<tr>
+  <th>IP</th>
+  <th>Location City</th>
+  <th>Location Country</th>
+  <th>User Agent</th>
+  <th>Referrer</th>
+  <th>Query</th>
+  <th>Visited at</th>
+</tr>
+<% @metric.each do |m| %>
+  <tr>
+    <td><%= m.ip %></td>
+    <td><%= m.location_city %></td>
+    <td><%= m.location_country %></td>
+    <td><%= m.user_agent %></td>
+    <td><%= m.referrer %></td>
+    <td><%= m.query_string %></td>
+    <td><%= m.visited_at.strftime("%a, %d %b %Y, %I:%M %p") %></td>
+  </tr>
+<% end %>
+</table>
+</body>
+</html>
