@@ -1,10 +1,8 @@
 require 'rubygems'
-require 'etc'
-require 'fileutils'
-require 'yaml'
 require 'sinatra'
 require 'data_mapper'
 require 'geocoder'
+require 'user_agent'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/metric.db")
 
@@ -29,7 +27,7 @@ end
 
 get '/reporting/?' do
   protected!
-  @metric = Metric.all
+  @metrics = Metric.all
   erb :reporting
 end
 
@@ -46,13 +44,13 @@ get '/m.js' do
 
   "/**
   * @file                         metrics
-  * @note                         JS File for TimesApp
+  * @note                         JS File
   */"
 end
 
 
 helpers do
-
+  # Taken from sinatra examples
   def protected!
     unless authorized?
       response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
@@ -64,5 +62,5 @@ helpers do
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
     @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['admin', 'admin']
   end
-
+    
 end

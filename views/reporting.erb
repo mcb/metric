@@ -6,27 +6,50 @@
 </head>
 
 <body>
-<table>
-<tr>
-  <th>IP</th>
-  <th>Location City</th>
-  <th>Location Country</th>
-  <th>User Agent</th>
-  <th>Referrer</th>
-  <th>Query</th>
-  <th>Visited at</th>
-</tr>
-<% @metric.each do |m| %>
-  <tr>
-    <td><%= m.ip %></td>
-    <td><%= m.location_city %></td>
-    <td><%= m.location_country %></td>
-    <td><%= m.user_agent %></td>
-    <td><%= m.referrer %></td>
-    <td><%= m.query_string %></td>
-    <td><%= m.visited_at.strftime("%a, %d %b %Y, %I:%M %p") %></td>
-  </tr>
-<% end %>
-</table>
+  
+  <header>
+    <h1><img src="/logo.png" alt="Metrics" /></h1>
+  </header>
+  
+  <section id="content">
+    <section id="chart">
+      <div id="month"></div>  
+    </section>
+
+    <table>
+      <tr>
+        <th>IP</th>
+        <th>Location City</th>
+        <th>Location Country</th>
+        <th>User Agent</th>
+        <th>Referrer</th>
+        <th>Visited at</th>
+      </tr>
+      <% @metrics.each do |m| %>
+        <% agent = UserAgent.new(m.user_agent) %>
+        <tr>
+          <td><%= m.ip %></td>
+          <td><%= m.location_city %></td>
+          <td><%= m.location_country %></td>
+          <td><%= agent.name.capitalize %> (<%= agent.version %>) running on <%= agent.os %></td>
+          <td><%= m.referrer %></td>
+          <td><%= m.visited_at.strftime("%a, %d %b %Y, %I:%M %p") %></td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+  
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="/jquery.graph.js" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    jQuery(function($){
+      $("#month").graph({
+        drawLineGraph:true,
+        intervals: <%= (Date.today-22..Date.today).map { |day| day.strftime("%d")} %>,
+        data:  <%= (Date.today-21..Date.today+1).map { |date| @metrics.count(:conditions => ["visited_at >= ? and visited_at <?",date-1, date])}.inspect %>
+      });        
+    });
+  </script>
+
 </body>
 </html>
