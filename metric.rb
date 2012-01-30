@@ -3,6 +3,7 @@ require 'sinatra'
 require 'data_mapper'
 require 'geocoder'
 require 'user_agent'
+require './flags.rb'
 
 DataMapper::setup(:default, "sqlite3://#{Dir.pwd}/metric.db")
 
@@ -41,7 +42,7 @@ get '/m.js' do
                         :location_country => result.country,
                         :url => request.referrer,
                         :query_string => request.query_string,
-                        :referrer
+                        :referrer => request.referrer,
                         :visited_at => Time.now)
 
   "/**
@@ -64,5 +65,5 @@ helpers do
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
     @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['admin', 'admin']
   end
-    
+  
 end

@@ -22,6 +22,7 @@ a:hover                         { text-decoration:underline; }
 
 
 .hidden                         { display:none;}
+.center                         { text-align:center; }
 
 /**
 * @section                      ClearFix

@@ -15,22 +15,22 @@
     <section id="chart">
       <div id="month"></div>  
     </section>
-    <div class="tooltip">blafasel</div>
+    
     <table>
       <tr>
         <th>IP</th>
-        <th>Location City</th>
-        <th>Location Country</th>
+        <th>City</th>
+        <th>Country</th>
         <th>User Agent</th>
         <th>Url requested</th>
         <th>Visited at</th>
       </tr>
       <% @metrics.each do |m| %>
         <% agent = UserAgent.new(m.user_agent) %>
-        <tr class="">
+        <tr>
           <td><%= m.ip %></td>
           <td><%= m.location_city %></td>
-          <td class="tooltipped"><img src="/flags/<%= m.location_country %>.png" alt="<%= m.location_country %>" /><span class="tooltip"><%= m.location_country %></span></td>
+          <td class="tooltipped center"><img src="/flags/<%= to_country_code("#{m.location_country}") %>.png" alt="<%= m.location_country %>" /><span class="tooltip"><%= m.location_country %></span></td>
           <td class="tooltipped"><%= agent.name.capitalize %> (<%= agent.version %>) running on <%= agent.os %> <span class="tooltip"><%= m.user_agent %></span></td>
           <td><%= m.url %></td>
           <td><%= m.visited_at.strftime("%a, %d %b %Y, %I:%M %p") %></td>
@@ -39,7 +39,7 @@
     </table>
   </section>
   
-  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" charset="utf-8"></script>
+  <script type="text/javascript" src="/jquery.min.js" charset="utf-8"></script>
   <script type="text/javascript" src="/jquery.graph.js" charset="utf-8"></script>
   <script type="text/javascript" charset="utf-8">
     jQuery(function($){
