@@ -13,6 +13,7 @@ class Metric
     property :ip, String
     property :location_city, String
     property :location_country, String
+    property :url, String
     property :referrer, String
     property :query_string, String
     property :visited_at, DateTime
@@ -38,8 +39,9 @@ get '/m.js' do
                         :ip => request.ip,
                         :location_city => result.city,
                         :location_country => result.country,
-                        :referrer => request.referrer,
+                        :url => request.referrer,
                         :query_string => request.query_string,
+                        :referrer
                         :visited_at => Time.now)
 
   "/**

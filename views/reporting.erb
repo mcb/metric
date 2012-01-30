@@ -15,24 +15,24 @@
     <section id="chart">
       <div id="month"></div>  
     </section>
-
+    <div class="tooltip">blafasel</div>
     <table>
       <tr>
         <th>IP</th>
         <th>Location City</th>
         <th>Location Country</th>
         <th>User Agent</th>
-        <th>Referrer</th>
+        <th>Url requested</th>
         <th>Visited at</th>
       </tr>
       <% @metrics.each do |m| %>
         <% agent = UserAgent.new(m.user_agent) %>
-        <tr>
+        <tr class="">
           <td><%= m.ip %></td>
           <td><%= m.location_city %></td>
-          <td><%= m.location_country %></td>
-          <td><%= agent.name.capitalize %> (<%= agent.version %>) running on <%= agent.os %></td>
-          <td><%= m.referrer %></td>
+          <td class="tooltipped"><img src="/flags/<%= m.location_country %>.png" alt="<%= m.location_country %>" /><span class="tooltip"><%= m.location_country %></span></td>
+          <td class="tooltipped"><%= agent.name.capitalize %> (<%= agent.version %>) running on <%= agent.os %> <span class="tooltip"><%= m.user_agent %></span></td>
+          <td><%= m.url %></td>
           <td><%= m.visited_at.strftime("%a, %d %b %Y, %I:%M %p") %></td>
         </tr>
       <% end %>
