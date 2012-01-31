@@ -27,10 +27,10 @@ module Metrics
     erb :index
   end
 
-  get '/reporting/?' do
+  get '/reports/?' do
     protected!
     @metrics = Metric.all
-    erb :reporting
+    erb :reports
   end
 
   get '/m.js' do
