@@ -1,5 +1,5 @@
 # config.ru
-require './metric.rb'
+require 'metric'
 
 set :user, 'admin'
 set :password, 'admin'
