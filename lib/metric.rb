@@ -1,12 +1,10 @@
-require "metric/version"
 require 'rubygems'
 require 'sinatra'
 require 'data_mapper'
 require 'geocoder'
 require 'user_agent'
+require 'metric/version'
 require 'metric/flags'
-
-DataMapper::setup(:default, "sqlite3:///Users/mbeck/metric.db")
 
 module Metrics
   class Metric

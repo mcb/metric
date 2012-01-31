@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["michael.beck@qualeapps.com"]
   s.homepage    = "http://quale.de"
   s.summary     = %q{Metrics for your website}
-  s.description = %q{metrics provides analytics for your website, logging all incoming traffic}
+  s.description = %q{Metrics provides analytics for your website, logging all incoming traffic}
 
   s.rubyforge_project = "metric"
 
