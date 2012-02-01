@@ -243,7 +243,7 @@ COUNTRY_CODES = {
 
 helpers do
   def to_country_code(country)
-    COUNTRY_CODES.index(country)
+    COUNTRY_CODES.index(country).downcase
   end
 end
 
