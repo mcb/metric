@@ -6,6 +6,11 @@ require 'user_agent'
 require 'metric/version'
 require 'metric/flags'
 
+if ENV['RACK_ENV'] = 'test'
+  require 'dm-sqlite-adapter'
+  DataMapper.setup(:default, "sqlite3::memory:")
+end
+
 module Metrics
   class Metric
       include DataMapper::Resource
