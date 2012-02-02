@@ -174,7 +174,7 @@ COUNTRY_CODES = {
 'QA'=>'Qatar',
 'RE'=>'Reunion',
 'RO'=>'Romania',
-'RU'=>'Russia',
+'RU'=>'Russian Federation',
 'RW'=>'Rwanda',
 'SH'=>'Saint Helena',
 'KN'=>'Saint Kitts And Nevis',
@@ -194,7 +194,7 @@ COUNTRY_CODES = {
 'SO'=>'Somalia',
 'ZA'=>'South Africa',
 'GS'=>'South Georgia And South Sandwich Islands',
-'KR'=>'South Korea',
+'KR'=>'Korea, Republic of',
 'ES'=>'Spain',
 'LK'=>'Sri Lanka',
 'SD'=>'Sudan',
@@ -243,7 +243,7 @@ COUNTRY_CODES = {
 
 helpers do
   def to_country_code(country)
-    COUNTRY_CODES.index(country).downcase
+    "#{COUNTRY_CODES.index(country).downcase}.png" unless COUNTRY_CODES.index(country).nil?
   end
 end
 
